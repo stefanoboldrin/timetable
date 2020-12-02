@@ -1,22 +1,43 @@
 /* CSS files add styling rules to your content */
-
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+.timetable {
 }
-
-ol li{
-  list-style-type: none;
-  color:blue;
-}
-ol {
-  display: inline-block;
+.timetable > .name {
+  text-align: center;
 }
 .day {
   display: inline-block;
+  margin: 0.8em;
+  padding: 0.2em;
+}
+.day.selected {
+  border: 1px dotted blue;
+}
+.day.selected {
+  background-color: yellow;
+}
+.day > .name {
+  color: blue;
+  margin-bottom: 1em;
+}
+.subject .links {
+  display: none;
+}
+.subject:focus .links,
+.subject:focus-within .links {
+  display: block;
+}
+.name:first-letter {
+  text-transform: uppercase;
+}
+.name {
+  border: 1px solid red;
+  padding: 0.4em;
 }

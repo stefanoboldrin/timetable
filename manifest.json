@@ -1,0 +1,23 @@
+{
+    "dir": "ltr",
+    "lang": "Italian",
+    "name": "Compiti",
+    "short_name": "Compiti",
+    "scope": "/",
+    "display": "fullscreen",
+    "start_url": "https://ett4re.glitch.me/",
+    "background_color": "transparent",
+    "theme_color": "transparent",
+    "description": "Compiti dal registro elettronico",
+    "orientation": "portrait",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "https://cdn.glitch.com/fdeee14a-0c9d-4822-bce0-0faa45cf03ab%2Fcompiti.png?v=1606781558568",
+            "sizes": "256x256"
+        }
+    ],
+    "url": "https://ett4re.glitch.me/",
+    "screenshots": []
+}

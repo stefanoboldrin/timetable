@@ -1,0 +1,50 @@
+{
+  "days": {
+    "domenica": [],
+    "lunedì": [
+      "matematica",
+      "italiano",
+      "ricreazione",
+      "italiano",
+      "italiano",
+      "scienze"
+    ],
+    "martedì": [
+      "storia",
+      "storia",
+      "ricreazione",
+      "religione",
+      "religione",
+      "inglese",
+      "mensa",
+      "tecnologia",
+      "immagine"
+    ],
+    "mercoledì": [
+      "matematica",
+      "matematica",
+      "ricreazione",
+      "italiano",
+      "italiano",
+      "motoria"
+    ],
+    "giovedì": [
+      "italiano",
+      "italiano",
+      "ricreazione",
+      "matematica",
+      "musica",
+      "inglese"
+    ],
+    "venerdì": [
+      "matematica",
+      "matematica",
+      "ricreazione",
+      "scienze",
+      "geografia",
+      "geografia"
+    ],
+    "sabato": []
+  },
+  "breaks": ["ricreazione", "mensa"]
+}
