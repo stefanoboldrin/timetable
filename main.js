@@ -1,7 +1,12 @@
-import { render, html } from "https://unpkg.com/kaboobie@latest?module";
+import {
+  render,
+  html,
+  useState
+} from "https://unpkg.com/kaboobie@latest?module";
 
 import { Timetable } from "./components/timetable.js";
 import { Day } from "./components/day.js";
+import { DayNav } from "./components/daynav.js";
 import { Logger } from "./components/logger.js";
 
 const { log, error } = Logger(document.querySelector("footer"));
@@ -78,13 +83,25 @@ window.onerror = error;
           },
           get nextDay() {
             const days = timetableModel.days;
-            const nextDayIdx = dayIdx === days.length ? 0 : dayIdx + 1;
+            const nextDayIdx = dayIdx === days.length - 1 ? 0 : dayIdx + 1;
             return days[nextDayIdx];
           },
           get previousDay() {
             const days = timetableModel.days;
             const prevDayIdx = dayIdx > 0 ? dayIdx - 1 : days.length - 1;
             return days[prevDayIdx];
+          },
+          get end() {
+            const subjects = this.subjects;
+            if (!subjects.length) {
+              return { hours: 0, minutes: 0 };
+            }
+            const [hours, minutes] = subjects[
+              subjects.length - 1 /* last subject */
+            ].end
+              .split(":")
+              .map(v => parseInt(v, 10));
+            return { hours, minutes };
           },
           hasSubject: function(subjectname) {
             return this.subjects.some(({ name }) => name === subjectname);
@@ -119,11 +136,11 @@ window.onerror = error;
   }
 
   const timetable = await getTimetable();
-  const tomorrow = addDays(new Date(), 1);
-  const selectedDayIdx = Math.min(
-    tomorrow.getDay() % 7,
-    Object.keys(timetable.days).length
-  );
+  const now = new Date();
+  const todayIdx = now.getDay();
+  const nowHours = now.getHours();
+  const today = timetable.days[todayIdx];
+  const { hours: todayEndHours, minutes: todayEndMinutes } = today.end;
 
   /*render(
     document.querySelector("main"),
@@ -132,9 +149,43 @@ window.onerror = error;
     `
   );*/
 
-  const selectedDay = timetable.days[selectedDayIdx];
+  const selectedDay =
+    nowHours === todayEndHours
+      ? now.getMinutes() >= todayEndMinutes
+        ? today.nextWorkingDay
+        : today
+      : nowHours > todayEndHours
+      ? today.nextWorkingDay
+      : today;
+
+  const selectedDayIdx = timetable.days.findIndex((day, dayIdx) => {
+    return day.name === selectedDay.name;
+  });
+  const diffDays =
+    selectedDayIdx < todayIdx /* nuova settimana */
+      ? selectedDayIdx -
+        todayIdx /* negativo */ +
+        timetable.days.length /* 7 giorni della settimana */
+      : selectedDayIdx - todayIdx;
+  const selectedDayDate = addDays(now, diffDays);
+
+  //log(DayNav)
+  //log(selectedDay.subjects.length)
 
   render(
+    document.querySelector("main"),
+    html`
+      <${DayNav} day=${selectedDay}>
+        <${Day}
+          name=${selectedDay.name}
+          subjects=${selectedDay.subjects}
+          date=${selectedDayDate}
+        />
+      <//>
+    `
+  );
+
+  /*render(
     document.querySelector("main"),
     html`
       <${Day}
@@ -143,5 +194,5 @@ window.onerror = error;
         date=${tomorrow}
       />
     `
-  );
+  );*/
 })();

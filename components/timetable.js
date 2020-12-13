@@ -1,8 +1,6 @@
 import {
   Component,
-  render,
-  html,
-  useState
+  html
 } from "https://unpkg.com/kaboobie@latest?module";
 
 import { Logger } from "./logger.js";

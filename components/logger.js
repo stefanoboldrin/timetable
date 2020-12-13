@@ -14,7 +14,7 @@ const Entry = comp(
 
 const logger = comp(
   entries => html`
-    <ol class='log'>
+    <ol class='log' style='font-family: monospace, monospace;'>
       ${entries.map(entry => Entry(entry))}
     </ol>
   `

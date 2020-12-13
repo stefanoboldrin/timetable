@@ -1,8 +1,6 @@
 import {
   Component,
-  render,
-  html,
-  useState
+  html
 } from "https://unpkg.com/kaboobie@latest?module";
 
 import { Logger } from "./logger.js";
@@ -32,6 +30,7 @@ const Day = Component(day => {
   if (selected) {
     classNames.push("selected");
   }
+  debugger
   const fDate = formatDate(date);
   const today = fDate === formatDate(new Date());
   const tomorrow = fDate === formatDate(addDays(new Date(), 1));
@@ -51,6 +50,7 @@ const Day = Component(day => {
       </h3>
       <div>
         ${subjects.map(subject => {
+    //log(subject.name)
           return Subject(subject, date);
         })}
       </div>
