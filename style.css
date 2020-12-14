@@ -1,31 +1,29 @@
 /* CSS files add styling rules to your content */
+/*
+  The page supports both dark and light color schemes,
+  and the page author prefers dark.
+*/
+:root {
+  color-scheme: dark light;
+}
 * {
-  box-sizing: border-box;
+  line-height: 3em;
 }
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  font-family: sans-serif;
+}
+
+main,
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timetable {
 }
 .timetable > .name {
   text-align: center;
-}
-.day {
-  display: inline-block;
-  margin: 0.8em;
-  padding: 0.2em;
-}
-.day.selected {
-  border: 1px dotted blue;
-}
-.day.selected {
-  background-color: yellow;
-}
-.day > .name {
-  color: blue;
-  margin-bottom: 1em;
 }
 .subject .links {
   display: none;
@@ -34,10 +32,7 @@ body {
 .subject:focus-within .links {
   display: block;
 }
+summary:first-letter,
 .name:first-letter {
   text-transform: uppercase;
-}
-.name {
-  border: 1px solid red;
-  padding: 0.4em;
 }

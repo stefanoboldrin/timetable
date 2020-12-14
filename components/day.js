@@ -1,7 +1,4 @@
-import {
-  Component,
-  html
-} from "https://unpkg.com/kaboobie@latest?module";
+import { Component, html } from "https://unpkg.com/kaboobie@latest?module";
 
 import { Logger } from "./logger.js";
 const { log, error } = Logger();
@@ -30,14 +27,13 @@ const Day = Component(day => {
   if (selected) {
     classNames.push("selected");
   }
-  debugger
   const fDate = formatDate(date);
   const today = fDate === formatDate(new Date());
   const tomorrow = fDate === formatDate(addDays(new Date(), 1));
   const yesterday = fDate === formatDate(addDays(new Date(), -1));
 
   return html`
-    <div class="${classNames.join(" ")}" tabindex="0" .autofocus=${selected}>
+    <div class="${classNames.join(" ")}" _tabindex="0" .autofocus=${selected}>
       <h3 class="name">
         ${name}
         ${today
@@ -50,7 +46,7 @@ const Day = Component(day => {
       </h3>
       <div>
         ${subjects.map(subject => {
-    //log(subject.name)
+          //log(subject.name)
           return Subject(subject, date);
         })}
       </div>
@@ -59,6 +55,10 @@ const Day = Component(day => {
 });
 
 const Subject = Component((subject, date) => {
+  function capitalize(s) {
+    if (typeof s !== "string") return "";
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
   const { name, start, end, isBreak } = subject;
   const interval = [start, end].join(" - ");
   const Clickable = Component(({ name, previousLessonDate }) => {
@@ -69,7 +69,7 @@ const Subject = Component((subject, date) => {
       name
     )}`;
     return html`
-      ${name}
+      <summary class="name">${capitalize(name)}</summary>
       <div class="links">
         <a href=${registro} target="_blank" rel="noreferrer">Registro</a>
         <a href=${lezioni} target="_blank" rel="noreferrer">Lezioni</a>
@@ -78,7 +78,7 @@ const Subject = Component((subject, date) => {
   });
   const Text = Component(txt => {
     return html`
-      ${txt.name}
+      <summary class="name">${capitalize(txt.name)}</summary>🥳🥪🧃
     `;
   });
   // if(!isBreak){
@@ -89,14 +89,12 @@ const Subject = Component((subject, date) => {
     ? ""
     : formatDate(addDays(date, -subject.daysElapsedFromPreviousLesson));
   return html`
-    <div class="subject" tabindex=${isBreak ? "" : 0} title=${interval}>
-      <div class="name" style=${isBreak ? "color:lightgrey" : ""}>
-        <${isBreak ? Text : Clickable}
-          name=${name}
-          previousLessonDate=${previousLessonDate}
-        />
-      </div>
-    </div>
+    <details class="su_bject" ta_bindex=${isBreak ? "" : 0} title=${interval}>
+      <${isBreak ? Text : Clickable}
+        name=${name}
+        previousLessonDate=${previousLessonDate}
+      />
+    </details>
   `;
 });
 
