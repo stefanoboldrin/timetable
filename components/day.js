@@ -1,8 +1,5 @@
 import { Component, html } from "https://unpkg.com/kaboobie@latest?module";
 
-import { Logger } from "./logger.js";
-const { log, error } = Logger();
-
 function formatDate(date) {
   var d = new Date(date),
     month = "" + (d.getMonth() + 1),
@@ -56,7 +53,10 @@ const Day = Component(day => {
 
 const Subject = Component((subject, date) => {
   function capitalize(s) {
-    if (typeof s !== "string") return "";
+    // bug chromium summary:first-letter autocapitalize
+    if (typeof s !== "string") {
+      return "";
+    }
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
   const { name, start, end, isBreak } = subject;

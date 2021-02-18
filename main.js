@@ -1,16 +1,12 @@
-import {
-  render,
-  html,
-  useState
-} from "https://unpkg.com/kaboobie@latest?module";
+import { render, html } from "https://unpkg.com/kaboobie@latest?module";
 
 import { Timetable } from "./components/timetable.js";
 import { Day } from "./components/day.js";
 import { DayNav } from "./components/daynav.js";
-import { Logger } from "./components/logger.js";
 
-const { log, error } = Logger(document.querySelector("footer"));
-window.onerror = error;
+window.onerror = e => {
+  alert(e.message);
+};
 
 (async function() {
   async function getTimetable() {

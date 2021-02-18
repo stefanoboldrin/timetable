@@ -1,12 +1,6 @@
-import {
-  Component,
-  html
-} from "https://unpkg.com/kaboobie@latest?module";
+import { Component, html } from "https://unpkg.com/kaboobie@latest?module";
 
-import { Logger } from "./logger.js";
 import { Day } from "./day.js";
-
-const { log, error } = Logger();
 
 // each component receives its "props"
 const Timetable = Component(({ days }) => {
