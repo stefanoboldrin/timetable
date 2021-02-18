@@ -5,7 +5,7 @@
     "short_name": "Compiti",
     "scope": "/",
     "display": "fullscreen",
-    "start_url": "https://stefanoboldrin.github.io/timetable/",
+    "start_url": "https://ett4re.glitch.me/",
     "background_color": "transparent",
     "theme_color": "transparent",
     "description": "Compiti dal registro elettronico",
@@ -18,6 +18,6 @@
             "sizes": "256x256"
         }
     ],
-    "url": "https://stefanoboldrin.github.io/timetable/",
+    "url": "https://ett4re.glitch.me/",
     "screenshots": []
 }

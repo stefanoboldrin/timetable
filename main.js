@@ -180,7 +180,10 @@ window.onerror = e => {
       <//>
     `
   );
-
+  
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js?2");
+  }
   /*render(
     document.querySelector("main"),
     html`
