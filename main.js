@@ -15,7 +15,7 @@ window.onerror = e => {
       return resp.json();
     }
 
-    const timetable = await fetchJSON("./data/timetable.json"); // {days: {lunedì: ["italiano",...]}}
+    const timetable = await fetchJSON("./data/timetable.json?2"); // {days: {lunedì: ["italiano",...]}}
     const workweek = await fetchJSON("./data/workweek.json"); // ["lunedì", "martedì", ...]
     const plainIntervals = await fetchJSON("./data/intervals.json"); // ['8','9',...]
     const intervals = plainIntervals.map((startHour, idx) => {
