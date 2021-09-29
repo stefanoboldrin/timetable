@@ -2,47 +2,47 @@
   "days": {
     "domenica": [],
     "lunedì": [
-      "matematica",
+      "italiano",
       "italiano",
       "ricreazione",
-      "italiano",
-      "italiano",
-      "scienze"
+      "matematica",
+      "matematica",
+      "tecnologia"
     ],
     "martedì": [
-      "storia",
-      "storia",
+      "italiano",
+      "italiano",
       "ricreazione",
-      "religione",
-      "religione",
-      "inglese",
+      "storia",
+      "storia",
+      "immagine",
       "mensa",
-      "tecnologia",
-      "immagine"
+      "religione",
+      "religione"
     ],
     "mercoledì": [
       "matematica",
       "matematica",
       "ricreazione",
-      "italiano",
-      "italiano",
-      "motoria"
+      "inglese",
+      "geografia",
+      "geografia"
     ],
     "giovedì": [
       "italiano",
       "italiano",
       "ricreazione",
-      "matematica",
-      "musica",
-      "inglese"
+      "italiano",
+      "motoria",
+      "musica"
     ],
     "venerdì": [
       "matematica",
       "matematica",
       "ricreazione",
+      "inglese",
       "scienze",
-      "geografia",
-      "geografia"
+      "scienze"
     ],
     "sabato": []
   },
